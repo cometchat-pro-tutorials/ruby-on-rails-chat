@@ -2,6 +2,8 @@
 
 This example app shows how to build one-on-one chats with Comet Chat Pro.
 
+You can view it live at [https://ccp-sample-app.herokuapp.com](https://ccp-sample-app.herokuapp.com)
+
 ### Getting Started
 Here's how I progressed through this app. If you wanted to start from scratch, you'd follow similar steps.
 - `rails new cometchatpro --skip-active-record -T` (no database or tests needed)
@@ -28,7 +30,7 @@ This demo uses:
 * [Styling](https://bootsnipp.com/snippets/exZX3)
 
 ## Running the demo locally
-* Download the repository [here](https://github.com/AmberWilkie/ccp-install) or by running `git clone https://github.com/AmberWilkie/ccp-install`
+* Download the repository [here](https://github.com/AmberWilkie/ccp-sample-app) or by running `git clone https://github.com/AmberWilkie/ccp-install`
 * `bundle install` to download dependencies
 * Create a `.env` file in the root of your folder with your CometChatPro credentials (make sure they are 'full access' and not 'auth only'). It should look like this:
 ```ruby
