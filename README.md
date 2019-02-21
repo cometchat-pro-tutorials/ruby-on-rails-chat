@@ -1,24 +1,43 @@
-# README
+# Ruby on Rails application with Comet Chat Pro
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This example app shows how to build one-on-one chats with Comet Chat Pro.
 
-Things you may want to cover:
+### Getting Started
+Here's how I progressed through this app. If you wanted to start from scratch, you'd follow similar steps.
+- `rails new cometchatpro --skip-active-record -T` (no database or tests needed)
+- Add API key and App ID from Comet Chat to `.env` file; add `dotenv-rails` to Gemfile; `bundle`.
+- `rails generate controller Users`, add to `routes.rb`
+- Add view for `users/new`.
+- Add view, routing and controller action for `/users/show/:id`. Use flash messages in the controller.
+- Add Javascript methods for fetching previous messages and sending new messages.
+- Add Javascript listener for grabbing new messages. Further, append new sent messages to the message list.
+- Style
 
-* Ruby version
 
-* System dependencies
+## Screenshots
+![screenshot 2](https://raw.githubusercontent.com/AmberWilkie/ccp-install/master/app/assets/images/screenshot2.png)
 
-* Configuration
+![screenshot 1](https://raw.githubusercontent.com/AmberWilkie/ccp-install/master/app/assets/images/screenshot1.png)
 
-* Database creation
+## Technology
+This demo uses:
 
-* Database initialization
+* CometChat Pro
+* Ruby on Rails 5.2.1
+* [Bootstrap](https://github.com/twbs/bootstrap-rubygem)
+* [Styling](https://bootsnipp.com/snippets/exZX3)
 
-* How to run the test suite
+## Running the demo locally
+* Download the repository [here](https://github.com/AmberWilkie/ccp-install) or by running `git clone https://github.com/AmberWilkie/ccp-install`
+* `bundle install` to download dependencies
+* Create a `.env` file in the root of your folder with your CometChatPro credentials (make sure they are 'full access' and not 'auth only'). It should look like this:
+```ruby
+COMETCHAT_APP_ID=23n2f2n3p2y3
+COMETCHAT_API_KEY=av22g24ll
+```
+* `rails s -p4000` will start your local server.
+* Go to `localhost:4000` to get started!
 
-* Services (job queues, cache servers, search engines, etc.)
+## Other examples
 
-* Deployment instructions
-
-* ...
+* [Complete JS app](https://github.com/cometchat-pro/javascript-reactjs-chat-app)

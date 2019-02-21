@@ -1,0 +1,12 @@
+<div class="inner-container">
+  <div class="header">Hi! Are you ready to chat? Pick your name below. Or perhaps you'd prefer
+    to <%= link_to 'create a new user', new_user_path %>?
+  </div>
+  <% @users.each do |user| %>
+    <div class="select-user">
+      <%= link_to user_path(user['uid']), { 'data-no-turbolink':  "true" } do %>
+        <%= user['name'] %>
+      <% end %>
+    </div>
+  <% end %>
+</div>

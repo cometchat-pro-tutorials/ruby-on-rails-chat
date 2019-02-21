@@ -1,0 +1,92 @@
+.messages {
+    max-height: 25rem;
+    overflow-y: scroll;
+}
+
+.message {
+    text-align: right;
+    background-color: lightpink;
+}
+.user-select {
+  text-transform: uppercase;
+}
+.selected-user {
+  background-color: gray;
+  size: 5rem;
+}
+
+.user-select, .selected-user {
+  text-transform: uppercase;
+  &:hover {
+    background-color: lightgray !important;
+  }
+}
+
+.messages {
+  max-height: 25rem;
+  overflow-y: scroll;
+  border: 1px solid lightgray;
+  padding: .5rem;
+}
+
+.message {
+  text-align: right;
+  background-color: lightpink;
+  margin: .5rem 0 .5rem 0;
+  width: fit-content;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  border-radius: .5rem;
+
+  &.self {
+    background-color: lightblue;
+  }
+}
+
+.sender {
+  font-size: 80%;
+}
+
+//
+//.chatperson {
+//    border-bottom: 1px solid #eee;
+//    width: 100%;
+//    display: flex;
+//    align-items: center;
+//    white-space: nowrap;
+//    overflow: hidden;
+//    margin-bottom: 15px;
+//    padding: 4px;
+//}
+//
+//.chatperson:hover {
+//    text-decoration: none;
+//    border-bottom: 1px solid orange;
+//}
+//
+//.namechat {
+//    display: inline-block;
+//    vertical-align: middle;
+//}
+//
+//.chatperson .chatimg img {
+//    width: 40px;
+//    height: 40px;
+//    background-image: url('http://i.imgur.com/JqEuJ6t.png');
+//}
+//
+//.chatperson .pname {
+//    font-size: 18px;
+//    padding-left: 5px;
+//}
+//
+//.chatperson .lastmsg {
+//    font-size: 12px;
+//    padding-left: 5px;
+//    color: #ccc;
+//}
+//
+//.limit-item {
+//    height: 50%;
+//}

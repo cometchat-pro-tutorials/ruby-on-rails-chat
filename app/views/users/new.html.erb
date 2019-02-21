@@ -1,0 +1,17 @@
+<div class="inner-container">
+  <div class="header">Yo, it's the new user page!</div>
+
+  <%= form_for 'user', url: { controller: 'users', action: 'create' }, method: :post do |form| %>
+    <p>
+      <%= form.label :name %><br>
+      <%= form.text_field :name %>
+    </p>
+
+    <p>
+      <%= form.submit %>
+    </p>
+    <% flash.each do |key, value| %>
+      <div class="alert alert-<%= key %>"><%= value %></div>
+    <% end %>
+  <% end %>
+</div>
