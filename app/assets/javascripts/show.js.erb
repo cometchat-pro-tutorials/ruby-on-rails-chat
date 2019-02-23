@@ -25,13 +25,13 @@ const loginUser = () => {
     const id = userDiv.dataset.id;
     CometChat.login(id, '<%= ENV['COMETCHAT_API_KEY'] %>').then(
         User => {
-        fetchMessages(<%= (@users || []).first&['uid'] %>);
-    addMessageListener()
-},
+        const messageDiv = document.getElementById('messages');
+        messageDiv.innerHTML = `<div class="whisper">Choose a  user to start chatting</div>`;
+        addMessageListener()
+    },
     error => {
         console.log("Login failed with exception:", {error});
-    }
-)
+    })
 }
 
 const initializeChat = () => {
@@ -61,7 +61,7 @@ const setUser = id => {
 const fetchMessages = id => {
     const limit = 30;
     const messagesRequest = new CometChat.MessagesRequestBuilder().setUID(id).setLimit(limit).build();
-
+    if (!id) { return; }
     messagesRequest.fetchPrevious().then(
         messages => {
             const messageDiv = document.getElementById('messages');
