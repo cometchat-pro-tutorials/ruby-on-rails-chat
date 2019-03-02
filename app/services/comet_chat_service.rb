@@ -18,6 +18,7 @@ class CometChatService
   def fetch_users
     response = HTTParty.get("#{BASE_URI}/users", headers: headers)
     response.dig('data')
+      &.map { |u| { name: u['name'], id: u['uid'] } }
   end
 
   private

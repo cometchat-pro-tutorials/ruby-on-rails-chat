@@ -18,9 +18,8 @@ class UsersController < ApplicationController
 
   def show
     users = CometChatService.new.fetch_users
-    @user = users.find { |u| u['uid'] == params[:id] }
-    @users = users.reject { |u| u['uid'] == @user['uid'] }
-                  .map { |u| [u['name'], u['uid']] }
+    @user = users.find { |u| u[:id] == params[:id] }
+    @users = users.reject { |u| u[:id] == @user[:id] }
   end
 
   private

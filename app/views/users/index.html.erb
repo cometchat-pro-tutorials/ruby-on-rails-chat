@@ -4,8 +4,8 @@
   </div>
   <% @users.each do |user| %>
     <div class="select-user">
-      <%= link_to user_path(user['uid']), { 'data-no-turbolink':  "true" } do %>
-        <%= user['name'] %>
+      <%= link_to user_path(user[:id]), { 'data-no-turbolink':  "true" } do %>
+        <%= user[:name] %>
       <% end %>
     </div>
   <% end %>

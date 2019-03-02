@@ -1,6 +1,6 @@
-<% content_for :title, @user['name'] %>
+<% content_for :title, @user[:name] %>
 <h5 class="mb-1">
-  Hello there <%= @user['name'] %>
+  Hello there <%= @user[:name] %>
 </h5>
 <% flash.each do |key, value| %>
   <div class="alert alert-<%= key %>"><%= value %></div>
@@ -11,9 +11,9 @@
     <div class="card col-sm-4" style="overflow:scroll;">
       <ul class="list-group list-group-flush">
         <% @users.each do |user| %>
-          <li class="list-group-item user-select bg-light" id="<%= user[1] %>" name='user-select'>
+          <li class="list-group-item user-select bg-light" id="<%= user[:id] %>" name='user-select'>
             <div class="d-flex w-100 justify-content-between">
-              <h5 class="mb-1"><%= user[0] %></h5>
+              <h5 class="mb-1"><%= user[:name] %></h5>
             </div>
           </li>
         <% end %>
@@ -48,8 +48,9 @@
   </div>
 </div>
 
-<%= tag("div", id: 'user-id', :data => { :name => @user['name'], :id => @user['uid'] }) %>
+<%= tag("div", id: 'user-id', data: { name: @user[:name], id: @user[:id] }) %>
 <% javascript_include_tag 'show', :cache => 'myfiles' %>
 <script type="text/javascript">
+    setUserListeners();
     document.addEventListener('turbolinks:load', () => setTimeout(initializeChat, 250));
 </script>

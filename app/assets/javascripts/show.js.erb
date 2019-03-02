@@ -1,21 +1,25 @@
-const displayNewMessage = msg => {
+const newMessage = (msg, id) =>
+     `<div class='message ${msg.sender.uid !== id && 'self'}'>
+        <div class='message-text'>${msg.text}</div>
+        <div class='message-sender'>- ${msg.sender.name}</div>
+    </div>`
+
+const displayNewMessage = (currentChatterId, msg) => {
     const userDiv = document.getElementById('user-id');
     const id = userDiv.dataset.id;
+    if (![currentChatterId, id].includes(msg.sender.uid)) { return; }
     const newNode = document.createElement("div")
-    newNode.innerHTML = `<div class='message ${msg.sender.uid === id && 'self'}'>
-                        <div class='message-text'>${msg.text}</div>
-                        <div class='message-sender'>- ${msg.sender.name}</div>
-                       </div>`
+    newNode.innerHTML = newMessage(msg, id)
     const messageDiv = document.getElementById('messages')
     messageDiv.appendChild(newNode)
     messageDiv.scrollTop = messageDiv.scrollHeight
 }
 
-const addMessageListener = () => {
+const addMessageListener = id => {
     CometChat.addMessageListener(
         'listener_id',
         new CometChat.MessageListener({
-            onTextMessageReceived: textMessage => displayNewMessage(textMessage)
+            onTextMessageReceived: textMessage => displayNewMessage(id, textMessage)
         })
 )}
 
@@ -27,23 +31,24 @@ const loginUser = () => {
         User => {
         const messageDiv = document.getElementById('messages');
         messageDiv.innerHTML = `<div class="whisper">Choose a  user to start chatting</div>`;
-        addMessageListener()
     },
     error => {
         console.log("Login failed with exception:", {error});
     })
 }
 
+const setUserListeners = () => {
+    const users = document.getElementsByName('user-select');
+    users.forEach(u => u.addEventListener("click", e => {
+        const id = e.target.id || e.target.offsetParent.id
+        setUser(id);
+        fetchMessages(id);
+    }))
+}
+
 const initializeChat = () => {
     CometChat.init('<%= ENV['COMETCHAT_APP_ID'] %>').then(
         hasInitialized => {
-            const users = document.getElementsByName('user-select');
-            users.forEach(u => u.addEventListener("click", e => {
-                const id = e.target.id || e.target.offsetParent.id
-                fetchMessages(id);
-                setUser(id)
-            }));
-
             loginUser()
         },
         error => {
@@ -56,20 +61,19 @@ const setUser = id => {
     previousDivs.forEach(div => div.className = div.className.replace(/\bbg-info\b/,''));
     const userDiv = document.getElementById(id);
     userDiv.className = 'list-group-item bg-info user-select'
+    addMessageListener(id)
 }
 
 const fetchMessages = id => {
+    if (!id) { return; }
+
     const limit = 30;
     const messagesRequest = new CometChat.MessagesRequestBuilder().setUID(id).setLimit(limit).build();
-    if (!id) { return; }
     messagesRequest.fetchPrevious().then(
         messages => {
             const messageDiv = document.getElementById('messages');
             messageDiv.innerHTML = messages.length > 0 ?
-              messages.map(msg => `<div class='message ${msg.sender.uid !== id && 'self'}'>
-                    <div class='message-text'>${msg.text}</div>
-                    <div class='message-sender'>- ${msg.sender.name}</div>
-                   </div>`).join('') :
+              messages.map(msg => newMessage(msg, id)).join('') :
               `<div class="whisper">Start of message history</div>`;
             messageDiv.scrollTop = messageDiv.scrollHeight
         },
@@ -89,7 +93,7 @@ const sendMessage = () => {
     const textMessage = new CometChat.TextMessage(recipient_id, message_text, messageType, receiverType);
 
     CometChat.sendMessage(textMessage).then(
-        message => displayNewMessage(message),
+        message => displayNewMessage(recipient_id, message),
         error => {
             console.log("Message sending failed with error:", error);
         }

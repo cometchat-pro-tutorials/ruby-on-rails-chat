@@ -30,7 +30,7 @@ This demo uses:
 * [Styling](https://bootsnipp.com/snippets/exZX3)
 
 ## Running the demo locally
-* Download the repository [here](https://github.com/AmberWilkie/ccp-sample-app) or by running `git clone https://github.com/AmberWilkie/ccp-install`
+* Download the repository [here](https://github.com/AmberWilkie/ccp-sample-app) or by running `git clone https://github.com/AmberWilkie/ccp-sample-app`
 * `bundle install` to download dependencies
 * Create a `.env` file in the root of your folder with your CometChatPro credentials (make sure they are 'full access' and not 'auth only'). It should look like this:
 ```ruby
