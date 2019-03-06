@@ -1,8 +1,11 @@
-const newMessage = (msg, id) =>
-     `<div class='message ${msg.sender.uid !== id && 'self'}'>
+const newMessage = (msg, id) => {
+    return (
+        `<div class='message ${msg.sender.uid === id && 'self'}'>
         <div class='message-text'>${msg.text}</div>
         <div class='message-sender'>- ${msg.sender.name}</div>
     </div>`
+    )
+}
 
 const displayNewMessage = (currentChatterId, msg) => {
     const userDiv = document.getElementById('user-id');

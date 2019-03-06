@@ -15,7 +15,6 @@ Here's how I progressed through this app. If you wanted to start from scratch, y
 - Add Javascript listener for grabbing new messages. Further, append new sent messages to the message list.
 - Style
 
-
 ## Screenshots
 ![screenshot 2](https://raw.githubusercontent.com/AmberWilkie/ccp-install/master/app/assets/images/screenshot2.png)
 

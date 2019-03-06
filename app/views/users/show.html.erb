@@ -52,5 +52,5 @@
 <% javascript_include_tag 'show', :cache => 'myfiles' %>
 <script type="text/javascript">
     setUserListeners();
-    document.addEventListener('turbolinks:load', () => setTimeout(initializeChat, 250));
+    document.addEventListener('turbolinks:load', initializeChat);
 </script>
