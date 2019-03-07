@@ -1,44 +1,50 @@
-# Ruby on Rails application with Comet Chat Pro
+# Build one-to-one chat in your Ruby on Rails application
 
-This example app shows how to build one-on-one chats with Comet Chat Pro.
+Read the full tutorial here:
 
-You can view it live at [https://ccp-sample-app.herokuapp.com](https://ccp-sample-app.herokuapp.com)
+[**>> Build one-to-one chat in your Ruby on Rails application**](https://paper.dropbox.com/doc/Quickly-add-chat-to-your-Ruby-on-Rails-app--AY23lOf2Tnxwo_M_bNELa78GAg-1ZKlRiA00eP05e8IxleB8)
 
-### Getting Started
-Here's how I progressed through this app. If you wanted to start from scratch, you'd follow similar steps.
-- `rails new cometchatpro --skip-active-record -T` (no database or tests needed)
-- Add API key and App ID from Comet Chat to `.env` file; add `dotenv-rails` to Gemfile; `bundle`.
-- `rails generate controller Users`, add to `routes.rb`
-- Add view for `users/new`.
-- Add view, routing and controller action for `/users/show/:id`. Use flash messages in the controller.
-- Add Javascript methods for fetching previous messages and sending new messages.
-- Add Javascript listener for grabbing new messages. Further, append new sent messages to the message list.
-- Style
+This example app shows how to build one-on-one chats with Comet Chat Pro:
 
-## Screenshots
-![screenshot 2](https://raw.githubusercontent.com/AmberWilkie/ccp-install/master/app/assets/images/screenshot2.png)
-
-![screenshot 1](https://raw.githubusercontent.com/AmberWilkie/ccp-install/master/app/assets/images/screenshot1.png)
+![screenshot 2](https://raw.githubusercontent.com/cometchat-pro-samples/ruby-on-rails-chat/master/app/assets/images/screenshot2.png)
+![screenshot 1](https://raw.githubusercontent.com/cometchat-pro-samples/ruby-on-rails-chat/master/app/assets/images/screenshot1.png)
 
 ## Technology
 This demo uses:
 
-* CometChat Pro
+* [CometChat Pro](https://cometchat.com/pro?utm_source=github&utm_medium=example-code-readme)
 * Ruby on Rails 5.2.1
-* [Bootstrap](https://github.com/twbs/bootstrap-rubygem)
-* [Styling](https://bootsnipp.com/snippets/exZX3)
+* Bootstrap
 
-## Running the demo locally
-* Download the repository [here](https://github.com/AmberWilkie/ccp-sample-app) or by running `git clone https://github.com/AmberWilkie/ccp-sample-app`
-* `bundle install` to download dependencies
-* Create a `.env` file in the root of your folder with your CometChatPro credentials (make sure they are 'full access' and not 'auth only'). It should look like this:
+## Running the demo
+
+To run the demo follow these steps:
+
+1. Head to [CometChat Pro](https://cometchat.com/pro?utm_source=github&utm_medium=example-code-readme) and create an account
+2. From the dashboard, create a new app called "Rails chat"
+3. One created, click **Explore**
+4. Head to the **API Keys** tab and create an API key with **Full access** scope
+5. Download the repository [here](https://github.com/AmberWilkie/ccp-sample-app) or by running `git clone https://github.com/AmberWilkie/ccp-sample-app`
+6. Run `bundle install`
+7. Create a `.env` file in the root of your folder with your CometChatPro credentials:
 ```ruby
 COMETCHAT_APP_ID=23n2f2n3p2y3
 COMETCHAT_API_KEY=av22g24ll
 ```
-* `rails s -p4000` will start your local server.
-* Go to `localhost:4000` to get started!
+8. Run `rails s -p4000` 
+9. Your app should be running on `localhost:4000`
 
-## Other examples
+Questions about running the demo? [Open an issue](https://github.com/cometchat-pro-samples/ruby-on-rails-chat/issues). We're here to help ✌🏻
 
-* [Complete JS app](https://github.com/cometchat-pro/javascript-reactjs-chat-app)
+
+## Useful links
+
+- 🏠 [CometChat Homepage](https://cometchat.com/pro?utm_source=github&utm_medium=example-code-readme)
+- 🚀 [Create your free account](https://app.cometchat.com?utm_source=github&utm_medium=example-code-readme)
+- 📚 [Documentation](https://prodocs.cometchat.com/docs?utm_source=github&utm_medium=example-code-readme)
+- 👾 [GitHub](https://github.com/CometChat-Pro)
+
+
+## Useful examples
+
+* [Complete React team chat app with voice and video calling](https://github.com/cometchat-pro/javascript-reactjs-chat-app)
